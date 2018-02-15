@@ -14,6 +14,6 @@ import retrofit2.http.GET;
  */
 
 public interface ApiInterface {
-    @GET("/")
-    Call<ArrayList<Penalty>> getPenalties();
+    @GET("https://penalties-api.herokuapp.com/")
+    Call<List<Penalty>> getPenalties();
 }
