@@ -3,4 +3,5 @@
 
     <dimen name="card_view_horizontal_margin">6dp</dimen>
     <dimen name="card_view_vertical_margin">3dp</dimen>
+    <dimen name="card_view_height">80dp</dimen>
 </resources>

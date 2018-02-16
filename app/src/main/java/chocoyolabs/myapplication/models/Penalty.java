@@ -9,6 +9,12 @@ public class Penalty {
     private Double price;
     private String type;
 
+    public Penalty(String text, Double price, String type) {
+        this.text = text;
+        this.price = price;
+        this.type = type;
+    }
+
     public String getText() {
         return text;
     }
