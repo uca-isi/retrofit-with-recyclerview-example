@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import chocoyolabs.myapplication.R;
 import chocoyolabs.myapplication.models.Penalty;
@@ -16,9 +17,9 @@ import chocoyolabs.myapplication.models.Penalty;
  */
 
 public class PenaltyAdapter extends RecyclerView.Adapter<PenaltyAdapter.ViewHolder> {
-    private ArrayList<Penalty> penalties;
+    private List<Penalty> penalties;
 
-    public PenaltyAdapter(ArrayList<Penalty> penalties) {
+    public PenaltyAdapter(List<Penalty> penalties) {
         this.penalties = penalties;
     }
 

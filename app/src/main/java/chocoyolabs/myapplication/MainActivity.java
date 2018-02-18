@@ -26,6 +26,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,49 +35,49 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         initViews();
+        configureRecyclerView();
         fetchHttpRequest();
     }
 
-    private void initViews(){
+    /**
+     * To get reference of the view elements
+     */
+    private void initViews() {
+        floatingActionButton = findViewById(R.id.fab);
         recyclerView = findViewById(R.id.recycler_view);
     }
 
-    private void fetchHttpRequest(){
+    /**
+     * To configure the RecyclerView
+     */
+    private void configureRecyclerView(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    /**
+     * To make an http request to an especific endpoint
+     */
+    private void fetchHttpRequest() {
         Toast.makeText(this, "Debug", Toast.LENGTH_SHORT).show();
 
-        Call<ArrayList<Penalty>> call = Api.instance().getPenalties();
-
-        call.enqueue(new Callback<ArrayList<Penalty>>() {
+        Call<List<Penalty>> call = Api.instance().getPenalties();
+        call.enqueue(new Callback<List<Penalty>>() {
             @Override
-            public void onResponse(@NonNull Call<ArrayList<Penalty>> call, Response<ArrayList<Penalty>> response) {
-                if(response.body() != null){
-                    Log.i("Debug:", response.body() + "");
-
+            public void onResponse(@NonNull Call<List<Penalty>> call, Response<List<Penalty>> response) {
+                if (response.body() != null) {
                     PenaltyAdapter penaltyAdapter = new PenaltyAdapter(response.body());
-
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-                    recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(penaltyAdapter);
                 }
-
-                Log.i("Debug:", response.body() + "");
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Penalty>> call, Throwable t) {
-                Log.i("Debug:", t.getMessage());
+            public void onFailure(@NonNull Call<List<Penalty>> call, @NonNull Throwable t) {
+                Log.i("Debug: ", t.getMessage());
             }
         });
     }
