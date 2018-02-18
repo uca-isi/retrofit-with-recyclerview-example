@@ -1,9 +1,5 @@
 package chocoyolabs.myapplication.models;
 
-/**
- * Created by moisolutions on 13/2/18.
- */
-
 public class Penalty {
     private String text;
     private String price;

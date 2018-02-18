@@ -6,15 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import chocoyolabs.myapplication.R;
 import chocoyolabs.myapplication.models.Penalty;
-
-/**
- * Created by moisolutions on 13/2/18.
- */
 
 public class PenaltyAdapter extends RecyclerView.Adapter<PenaltyAdapter.ViewHolder> {
     private List<Penalty> penalties;
@@ -25,12 +20,9 @@ public class PenaltyAdapter extends RecyclerView.Adapter<PenaltyAdapter.ViewHold
 
     @Override
     public PenaltyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //create a new view
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_penalty, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-        ViewHolder vh = new ViewHolder(view);
-        return vh;
+        return new ViewHolder(view);
     }
 
     @Override
