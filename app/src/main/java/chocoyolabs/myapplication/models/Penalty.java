@@ -6,7 +6,7 @@ package chocoyolabs.myapplication.models;
 
 public class Penalty {
     private String text;
-    private Double price;
+    private String price;
     private String type;
 
     public String getText() {
@@ -17,11 +17,11 @@ public class Penalty {
         this.text = text;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
