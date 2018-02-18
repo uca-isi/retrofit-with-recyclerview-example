@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<Penalty>> call, Throwable t) {
-                Log.i("Debug:", "Error");
+                Log.i("Debug:", t.getMessage());
             }
         });
     }
