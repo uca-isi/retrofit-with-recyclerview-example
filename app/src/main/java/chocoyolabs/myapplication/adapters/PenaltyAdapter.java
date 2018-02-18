@@ -37,7 +37,7 @@ public class PenaltyAdapter extends RecyclerView.Adapter<PenaltyAdapter.ViewHold
         Penalty penalty = penalties.get(position);
 
         holder.text.setText(penalty.getText());
-        holder.price.setText(String.valueOf(penalty.getPrice()));
+        holder.price.setText(penalty.getPrice());
         holder.text.setText(penalty.getType());
     }
 
